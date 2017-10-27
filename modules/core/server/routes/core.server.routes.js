@@ -1,9 +1,13 @@
 'use strict';
+// var expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
 
 module.exports = function (app) {
   // Root routing
   var core = require('../controllers/core.server.controller');
 
+  // We are going to protect /api routes with JWT
+  app.use('/api', core.requiresLoginToken);
   // Define error pages
   app.route('/server-error').get(core.renderServerError);
 
