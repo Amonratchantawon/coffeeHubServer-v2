@@ -62,7 +62,8 @@ describe('User update have token', function () {
       if (signinErr) {
         return done(signinErr);
       }
-      // signinRes.body.loginToken.should.not.be.empty();
+      signinRes.body.loginToken.should.not.be.empty();
+      token = signinRes.body.loginToken;
       done();
     });
   });
