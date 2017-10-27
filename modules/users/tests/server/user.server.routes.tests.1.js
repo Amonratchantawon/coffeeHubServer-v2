@@ -54,8 +54,17 @@ describe('User update have token', function () {
 
 
   it('token', function (done) {
-    // token.should.not.be.empty();
-    done();
+    agent.post('/api/auth/signin')
+    .send(credentials)
+    .expect(200)
+    .end(function (signinErr, signinRes) {
+      // Handle signin error
+      if (signinErr) {
+        return done(signinErr);
+      }
+      // signinRes.body.loginToken.should.not.be.empty();
+      done();
+    });
   });
 
 

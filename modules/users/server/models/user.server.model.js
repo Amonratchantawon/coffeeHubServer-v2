@@ -93,6 +93,14 @@ var UserSchema = new Schema({
       ref: 'Shop'
     }]
   },
+
+  loginToken:{
+    type:String
+  },
+  loginExpires:{
+    type:Date
+  },
+  
   updated: {
     type: Date
   },
