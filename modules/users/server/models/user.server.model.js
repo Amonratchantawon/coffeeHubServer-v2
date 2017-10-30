@@ -100,7 +100,9 @@ var UserSchema = new Schema({
   loginExpires:{
     type:Date
   },
-  
+  cupCions:{
+    type:Number
+  },
   updated: {
     type: Date
   },
