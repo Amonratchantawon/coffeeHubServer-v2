@@ -63,8 +63,8 @@ var UserSchema = new Schema({
     type: String,
     default: ''
   },
-  phone:{
-    type:String
+  phone: {
+    type: String
   },
   salt: {
     type: String
@@ -82,7 +82,7 @@ var UserSchema = new Schema({
   roles: {
     type: [{
       type: String,
-      enum: ['user', 'admin','shopowner','operator']
+      enum: ['user', 'admin', 'shopowner', 'operator']
     }],
     default: ['user'],
     required: 'Please provide at least one role'
@@ -94,14 +94,15 @@ var UserSchema = new Schema({
     }]
   },
 
-  loginToken:{
-    type:String
+  loginToken: {
+    type: String
   },
-  loginExpires:{
-    type:Date
+  loginExpires: {
+    type: Date
   },
-  cupCions:{
-    type:Number
+  cupcoin: {
+    type: Number,
+    default: 0
   },
   updated: {
     type: Date
