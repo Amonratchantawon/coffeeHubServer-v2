@@ -58,6 +58,57 @@ var ShopSchema = new Schema({
     type: String,
     default: 'ttp://res.cloudinary.com/hkv4hcrbu/image/upload/v1507261364/Hand-drawn-coffee-logos-design-vector-set-07-280x235_mhtdtd.jpg'
   },
+
+  openinghours:{
+    type:{
+      open:{
+        type:Date
+      },
+      close:{
+        type:Date
+      }
+    } 
+  },
+  facebook:{
+    type:String
+  },
+  instagram:{
+    type:String
+  },
+  line:{
+    type:String
+  },
+  parking:{
+    type: [{
+      type: String,
+      enum: ['have', 'nothave', 'ontheroad']
+    }],
+  },
+  favorite:{
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+
+  image:{
+    type:[String]
+  },
+
+  createduser:{
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+
+  editlog:{
+    type: [{
+      user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+      },
+      date:{
+        type:Date
+      }
+    }],
+  },
   created: {
     type: Date,
     default: Date.now
