@@ -4,15 +4,16 @@
  * Module dependencies
  */
 var favoritesPolicy = require('../policies/favorites.server.policy'),
+  core = require('../../../core/server/controllers/core.server.controller'),
   favorites = require('../controllers/favorites.server.controller');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Favorites Routes
-  app.route('/api/favorites').all(favoritesPolicy.isAllowed)
+  app.route('/api/favorites').all(core.requiresLoginToken, favoritesPolicy.isAllowed)
     .get(favorites.list)
     .post(favorites.create);
 
-  app.route('/api/favorites/:favoriteId').all(favoritesPolicy.isAllowed)
+  app.route('/api/favorites/:favoriteId').all(core.requiresLoginToken, favoritesPolicy.isAllowed)
     .get(favorites.read)
     .put(favorites.update)
     .delete(favorites.delete);
