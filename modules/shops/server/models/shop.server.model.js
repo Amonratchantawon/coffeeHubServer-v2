@@ -113,7 +113,7 @@ var ShopSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  user: {
+  shopowner: {
     type: Schema.ObjectId,
     ref: 'User'
   }
