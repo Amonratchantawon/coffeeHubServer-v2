@@ -17,6 +17,7 @@ var config = require('../config'),
   helmet = require('helmet'),
   flash = require('connect-flash'),
   consolidate = require('consolidate'),
+  cors = require('cors'),
   path = require('path');
 
 /**
