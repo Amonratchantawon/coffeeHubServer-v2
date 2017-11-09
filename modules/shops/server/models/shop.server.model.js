@@ -54,58 +54,61 @@ var ShopSchema = new Schema({
       }
     }
   },
-  logo:{
+  logo: {
     type: String,
     default: 'ttp://res.cloudinary.com/hkv4hcrbu/image/upload/v1507261364/Hand-drawn-coffee-logos-design-vector-set-07-280x235_mhtdtd.jpg'
   },
 
-  openinghours:{
-    type:{
-      open:{
-        type:Date
+  openinghours: {
+    type: {
+      open: {
+        type: Date
       },
-      close:{
-        type:Date
+      close: {
+        type: Date
       }
-    } 
+    }
   },
-  facebook:{
-    type:String
+  facebook: {
+    type: String
   },
-  instagram:{
-    type:String
+  instagram: {
+    type: String
   },
-  line:{
-    type:String
+  line: {
+    type: String
   },
-  parking:{
+  parking: {
     type: [{
       type: String,
       enum: ['have', 'nothave', 'ontheroad']
     }],
   },
-  favorite:{
+  favorite: {
+    type: [{
+      type: Schema.ObjectId,
+      ref: 'User'
+    }]
+  },
+
+  image: {
+    type: [String]
+  },
+
+  createduser: {
     type: Schema.ObjectId,
     ref: 'User'
   },
 
-  image:{
-    type:[String]
-  },
-
-  createduser:{
-    type: Schema.ObjectId,
-    ref: 'User'
-  },
-
-  editlog:{
+  editlog: {
     type: [{
       user: {
         type: Schema.ObjectId,
         ref: 'User'
       },
-      date:{
-        type:Date
+      date: {
+        type: Date,
+        default: Date.now
       }
     }],
   },
