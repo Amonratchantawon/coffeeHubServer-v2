@@ -50,6 +50,11 @@ module.exports.initLocalVariables = function (app) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
   });
+  var corsOptions = {
+    origin: '*'
+  };
+
+  app.use(cors(corsOptions));
 };
 
 /**
