@@ -4,17 +4,18 @@
  * Module dependencies
  */
 var shopsPolicy = require('../policies/shops.server.policy'),
+  core = require('../../../core/server/controllers/core.server.controller'),
   shops = require('../controllers/shops.server.controller');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Shops Routes
   app.route('/api/shops').all(shopsPolicy.isAllowed)
     .get(shops.list)
-    .post(shops.create);
+    .post(core.requiresLoginToken, shops.create);
 
   app.route('/api/shops/:shopId').all(shopsPolicy.isAllowed)
     .get(shops.read)
-    .put(shops.update)
+    .put(core.requiresLoginToken, shops.update)
     .delete(shops.delete);
 
   // Finish by binding the Shop middleware
