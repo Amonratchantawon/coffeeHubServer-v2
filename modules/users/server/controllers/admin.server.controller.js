@@ -28,6 +28,7 @@ exports.update = function (req, res) {
   user.email = req.body.email;
   user.phone = req.body.phone;
   user.username = req.body.username;
+  user.cupcoin = req.body.cupcoin;
   user.roles = req.body.roles;
 
   user.save(function (err) {
