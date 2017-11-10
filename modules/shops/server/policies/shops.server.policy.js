@@ -37,7 +37,7 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get']
     }, {
       resources: '/api/shops/:shopId',
-      permissions: ['get']
+      permissions: ['*']
     }]
   }]);
 };
