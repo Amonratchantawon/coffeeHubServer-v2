@@ -17,9 +17,9 @@ module.exports = function (app) {
 
   // Single user routes
   app.route('/api/users/:userId')
-    .get(core.requiresLoginToken,adminPolicy.isAllowed, admin.read)
+    .get(adminPolicy.isAllowed, admin.read)
     .put(core.requiresLoginToken,adminPolicy.isAllowed, admin.update)
-    .delete(core.requiresLoginToken,adminPolicy.isAllowed, admin.delete);
+    .delete(adminPolicy.isAllowed, admin.delete);
 
   // Finish by binding the user middleware
   app.param('userId', admin.userByID);
