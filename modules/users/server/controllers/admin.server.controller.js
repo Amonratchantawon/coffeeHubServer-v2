@@ -74,6 +74,20 @@ exports.list = function (req, res) {
   });
 };
 
+exports.shopOwner = function (req, res) {
+  // var data = req.id;
+
+  User.find({ roles: { '$in': ['shopowner'] } }).sort('-created').populate('user', 'displayName phone').exec(function (err, users) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+
+    res.json(users);
+  });
+};
+
 /**
  * User middleware
  */

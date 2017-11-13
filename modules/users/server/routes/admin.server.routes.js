@@ -5,7 +5,7 @@
  */
 var adminPolicy = require('../policies/admin.server.policy'),
   core = require('../../../core/server/controllers/core.server.controller'),
-admin = require('../controllers/admin.server.controller');
+  admin = require('../controllers/admin.server.controller');
 
 
 module.exports = function (app) {
@@ -16,10 +16,14 @@ module.exports = function (app) {
   app.route('/api/users')
     .get(adminPolicy.isAllowed, admin.list);
 
+  // ShopOwner collection routes
+  app.route('/api/users/shopOwner')
+    .get( admin.shopOwner);
+
   // Single user routes
   app.route('/api/users/:userId')
     .get(adminPolicy.isAllowed, admin.read)
-    .put(core.requiresLoginToken,adminPolicy.isAllowed, admin.update)
+    .put(core.requiresLoginToken, adminPolicy.isAllowed, admin.update)
     .delete(adminPolicy.isAllowed, admin.delete);
 
   // Finish by binding the user middleware

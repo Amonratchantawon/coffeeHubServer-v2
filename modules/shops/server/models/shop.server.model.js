@@ -119,6 +119,10 @@ var ShopSchema = new Schema({
   shopowner: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
   }
 });
 
