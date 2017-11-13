@@ -17,7 +17,7 @@ module.exports = function (app) {
     .get(adminPolicy.isAllowed, admin.list);
 
   // ShopOwner collection routes
-  app.route('/api/users/shopOwner')
+  app.route('/api/users/shopowner')
     .get( admin.shopOwner);
 
   // Single user routes
