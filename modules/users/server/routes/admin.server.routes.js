@@ -14,7 +14,7 @@ module.exports = function (app) {
 
   // Users collection routes
   app.route('/api/users')
-    .get(adminPolicy.isAllowed, admin.list);
+    .get(core.requiresLoginToken, adminPolicy.isAllowed, admin.list);
 
   // ShopOwner collection routes
   app.route('/api/users/shopowner')
