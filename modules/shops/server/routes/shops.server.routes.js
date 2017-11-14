@@ -10,13 +10,13 @@ var shopsPolicy = require('../policies/shops.server.policy'),
 module.exports = function (app) {
   // Shops Routes
   app.route('/api/shops').all(shopsPolicy.isAllowed)
-    .get(shops.list)
+    .get(core.requiresLoginToken, shops.list)
     .post(core.requiresLoginToken, shops.create);
 
   app.route('/api/shops/:shopId').all(shopsPolicy.isAllowed)
-    .get(shops.read)
+    .get(core.requiresLoginToken, shops.read)
     .put(core.requiresLoginToken, shops.update)
-    .delete(shops.delete);
+    .delete(core.requiresLoginToken, shops.delete);
 
   // Finish by binding the Shop middleware
   app.param('shopId', shops.shopByID);
