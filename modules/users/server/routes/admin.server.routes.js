@@ -18,13 +18,13 @@ module.exports = function (app) {
 
   // ShopOwner collection routes
   app.route('/api/users/shopowner')
-    .get( admin.shopOwner);
+    .get(core.requiresLoginToken, admin.shopOwner);
 
   // Single user routes
   app.route('/api/users/:userId')
-    .get(adminPolicy.isAllowed, admin.read)
+    .get(core.requiresLoginToken, adminPolicy.isAllowed, admin.read)
     .put(core.requiresLoginToken, adminPolicy.isAllowed, admin.update)
-    .delete(adminPolicy.isAllowed, admin.delete);
+    .delete(core.requiresLoginToken, adminPolicy.isAllowed, admin.delete);
 
   // Finish by binding the user middleware
   app.param('userId', admin.userByID);
